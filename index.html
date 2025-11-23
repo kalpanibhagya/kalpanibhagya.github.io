@@ -11,7 +11,6 @@
   <div id="header"></div>
 
   <main>
-    <div id="summary"></div>
     <div class="two-column">
       <div id="experience"></div>
       <div id="education"></div>
@@ -23,19 +22,40 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener("DOMContentLoaded", () => {
-      const sections = ["header", "summary", "experience", "education"];
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      sections.forEach(section => {
+      // First load header
+      fetch("sections/header.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("header").innerHTML = html;
+
+          // Now summary div exists → load summary
+          return fetch("sections/summary.html");
+        })
+        .then(res => res.text())
+        .then(summaryHtml => {
+          const summaryDiv = document.getElementById("summary");
+          if (summaryDiv) {
+            summaryDiv.innerHTML = summaryHtml;
+          } else {
+            console.error("Summary div not found after header load.");
+          }
+        })
+        .catch(err => console.error("Error loading header or summary:", err));
+
+      // Load remaining sections
+      ["experience", "education"].forEach(section => {
         fetch(`sections/${section}.html`)
-          .then(response => response.text())
+          .then(res => res.text())
           .then(html => {
             document.getElementById(section).innerHTML = html;
-          })
-          .catch(err => console.error(`Error loading ${section}:`, err));
+          });
       });
+
     });
   </script>
+
 </body>
 </html>

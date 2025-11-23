@@ -1,21 +1,26 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f6f8;
+    background: #afccf1;
     color: #222;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 header {
-    background: #659be2;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 40px;
+    background: #0c376e;
     color: white;
-    text-align: center;
-    padding: 30px 10px;
+    text-align: left;
+    padding: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .profile-pic {
     width: 220px;
     height: 220px;
-    border-radius: 30%;
+    border-radius: 50%;
     object-fit: cover;
     border: 3px solid white;
     margin-bottom: 15px;
@@ -25,24 +30,26 @@ header h1 {
     font-size: 2em;
 }
 header p {
-    font-size: 1.1em;
+    font-size: 1em;
     margin-top: 5px;
 }
 header .contact-info a {
-color: #fff;              /* make links white */
-font-weight: 500;
-text-decoration: underline; /* optional for visibility */
+    color: #fff;              
+    font-weight: 500;
+    text-decoration: underline; 
 }
 
 header .contact-info a:hover {
-color: #ffd700;           /* add a gold hover color for contrast */
+    color: #ffd700;           
 }
 main {
     max-width: 1000px;
-    margin: 40px auto;
+    margin: auto;
+    margin-bottom: 40px;
     background: white;
     padding: 30px;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 section {
@@ -69,11 +76,11 @@ li {
 }
 .contact-info {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     font-size: 0.95em;
 }
+
 .contact-info a {
     color: #004aad;
     text-decoration: none;
@@ -98,7 +105,7 @@ li {
 
 /* Hover effect */
 .skills span:hover {
-  background: #0066ff; /* brighter shade */
+  background: #0066ff; 
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 74, 173, 0.3);
 }
@@ -119,7 +126,7 @@ footer {
 }
 
 .two-column > div {
-    flex: 1;               /* Each column takes equal horizontal space */
+    flex: 1;               
     background: #fff;
     border-radius: 10px;
     padding: 1rem;
@@ -176,4 +183,16 @@ footer {
 
 .company:hover {
   text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
